@@ -24,7 +24,7 @@ const displaySongs = (songs) => {
                       </audio> 
                     </div>
                     <div class="col-md-3 text-md-right text-center">
-                        <button class="btn btn-success">Get Lyrics</button>
+                        <button onclick="getLyric('${song.artist.name},'${song.title}')"  class="btn btn-success">Get Lyrics</button>
                     </div>
                     </div>
 
@@ -35,3 +35,11 @@ const displaySongs = (songs) => {
     songContainer.appendChild(songDiv);
   });
 };
+
+
+const getLyric = (artist,title) => {
+  
+  const url = `https://api.lyrics.ovh/v1/:${artist}/:${title}`
+  console.log(url)
+
+}
