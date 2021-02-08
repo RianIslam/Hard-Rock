@@ -3,5 +3,9 @@ const searchSongs =()=>{
     const url = `https://api.lyrics.ovh/suggest/${searchText}`
     fetch(url)
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => displaySongs(data))
+}
+
+const displaySongs = songs =>{
+    console.log(songs);
 }
