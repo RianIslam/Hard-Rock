@@ -36,14 +36,23 @@ const displaySongs = (songs) => {
   });
 };
 
+// const getLyric = async (artist, title) => {
+//   const url = `https://api.lyrics.ovh/v1/${artist}/${title}`;
+//   const res = await fetch(url);
+//   const data = await res.json();
+//   displayLyrics(data.lyrics);
+// };
 
-const getLyric = async (artist, title) => {
+
+
+
+const getLyric = (artist, title) => {
   
-  const url = `https://api.lyrics.ovh/v1/${artist}/${title}`;
-  const res = await fetch(url)
-  const data = await res.json()
-  displayLyrics(data.lyrics)
-
+  const url = `https://api.lyrics.ovh/v1/${artist}/${title}`
+  .fetch(url)
+  .then(res => res.json())
+  .then(data => displayLyrics(data.lyrics))
+  .catch(error => console.log(error))
 }
 
 const displayLyrics = lyrics =>{
