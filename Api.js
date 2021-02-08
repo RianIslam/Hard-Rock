@@ -36,26 +36,39 @@ const displaySongs = (songs) => {
   });
 };
 
-// const getLyric = async (artist, title) => {
-//   const url = `https://api.lyrics.ovh/v1/${artist}/${title}`;
-//   const res = await fetch(url);
-//   const data = await res.json();
-//   displayLyrics(data.lyrics);
-// };
-
-
-
-
-const getLyric = (artist, title) => {
+const getLyric = async (artist, title) => {
+  const url = `https://api.lyrics.ovh/v1/${artist}/${title}`;
   
-  const url = `https://api.lyrics.ovh/v1/${artist}/${title}`
-  .fetch(url)
-  .then(res => res.json())
-  .then(data => displayLyrics(data.lyrics))
-  .catch(error => console.log(error))
-}
+  try{
+    const res = await fetch(url);
+    const data = await res.json();
+    displayLyrics(data.lyrics);
+  }
+  catch(error){
+    diplayError("this is for error")
+  }
+
+  
+};
+
+
+
+
+// const getLyric = (artist, title) => {
+  
+//   const url = `https://api.lyrics.ovh/v1/${artist}/${title}`
+//   .fetch(url)
+//   .then(res => res.json())
+//   .then(data => displayLyrics(data.lyrics))
+//   .catch(error => diplayError(error))
+// }
 
 const displayLyrics = lyrics =>{
   const lyricsDiv = document.getElementById('song-lyrics');
   lyricsDiv.innerText = lyrics;
+}
+
+const diplayError = error =>{
+  const errorTag = document.getElementById("error-message");
+  errorTag.innerText= error;
 }
